@@ -7,13 +7,13 @@ conn = mysql.connector.connect(
     database="library_system"
 )
 cursor = conn.cursor()
-# Απενεργοποίηση foreign key checks
+# Foreign key checks deactivation
 cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
 
-cursor.execute("TRUNCATE TABLE borrowings;")  # πρώτα οι εξαρτώμενοι πίνακες
-cursor.execute("TRUNCATE TABLE users;")       # μετά οι πίνακες που αναφέρονται
+cursor.execute("TRUNCATE TABLE borrowings;")  # first dependent tables
+cursor.execute("TRUNCATE TABLE users;")       # second table users
 
-# Ενεργοποίηση πάλι των foreign key checks
+# Foreign key checks activation
 cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
 
 conn.commit()

@@ -11,9 +11,8 @@ cursor = conn.cursor()
 
 cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
 
-cursor.execute("TRUNCATE TABLE borrowings;")  # πρώτα οι εξαρτώμενοι πίνακες
+cursor.execute("TRUNCATE TABLE borrowings;")  
 
-# Ενεργοποίηση πάλι των foreign key checks
 cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
 
 conn.commit()

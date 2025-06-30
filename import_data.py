@@ -1,7 +1,7 @@
 import csv
 import mysql.connector
 
-# Σύνδεση με τη βάση
+# Database connection
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -17,13 +17,13 @@ cursor.execute("TRUNCATE TABLE authors;")
 cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
 conn.commit()
 
-# Ανάγνωση του books.csv
+# Read books.csv
 with open("books.csv", mode="r", encoding="utf-8") as file:
     reader = csv.DictReader(file)
     authors_set = {}
     author_id_counter = 1
 
-    # Πρώτα περνάμε τους συγγραφείς
+    # First insert the authors
     for row in reader:
         author_name = row["authors"].strip()
         if author_name not in authors_set:
@@ -33,7 +33,7 @@ with open("books.csv", mode="r", encoding="utf-8") as file:
 
     conn.commit()
 
-# Δεύτερη ανάγνωση για εισαγωγή βιβλίων
+# Read books.csv
 with open("books.csv", mode="r", encoding="utf-8") as file:
     reader = csv.DictReader(file)
     book_id_counter = 1
@@ -54,4 +54,4 @@ conn.commit()
 cursor.close()
 conn.close()
 
-print("Η εισαγωγή ολοκληρώθηκε επιτυχώς!")
+print("Data was successfully inserted!")
