@@ -1,10 +1,12 @@
 # Smart Library
 
-A minimal library management system built with:
+A minimal library management system designed to simplify book borrowing and user management using React, Flask, and MySQL.
 
-- React (frontend)
-- Flask (backend)
-- MySQL (database)
+## Prerequisites
+
+- Python 3.x
+- Node.js & npm
+- MySQL Server
 
 ## Features
 
